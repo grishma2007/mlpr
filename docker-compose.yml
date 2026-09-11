@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  flask-api:
+    build: .
+    container_name: career_platform_flask
+    command: gunicorn flask_api.app:app --bind 0.0.0.0:5000 --workers 2
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./database:/app/database
+    restart: unless-stopped
+
+  streamlit-app:
+    build: .
+    container_name: career_platform_streamlit
+    command: streamlit run streamlit_app/app.py --server.port 8501 --server.address 0.0.0.0 --server.headless true
+    environment:
+      - FLASK_API_BASE_URL=http://flask-api:5000/api
+    ports:
+      - "8501:8501"
+    depends_on:
+      - flask-api
+    restart: unless-stopped

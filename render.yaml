@@ -1,0 +1,12 @@
+services:
+  # 1. Flask REST API & HTML/CSS Frontend
+  - type: web
+    name: career-platform-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python scripts/initialize_database.py
+    startCommand: gunicorn flask_api.app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: SECRET_KEY
+        generateValue: true

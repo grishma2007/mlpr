@@ -96,3 +96,31 @@ Run all unit and integration test suites:
 python -m unittest discover tests
 ```
 *(All 14 tests passing)*
+
+---
+
+## 🌐 6. Cloud & Docker Deployment
+
+### 🐳 Option A: One-Command Docker Compose
+Run both the Flask REST API/HTML UI and the Streamlit UI together:
+```bash
+docker compose up -d --build
+```
+- **HTML5/CSS3 Frontend + REST API:** `http://localhost:5000`
+- **Streamlit Multi-Page UI:** `http://localhost:8501`
+
+### ☁️ Option B: Free Cloud Deployment (Streamlit Cloud + Render)
+1. **Deploy Flask API on [Render.com](https://render.com):**
+   - Click **New Web Service** $\rightarrow$ Connect this GitHub repository.
+   - Build Command: `pip install -r requirements.txt && python scripts/initialize_database.py`
+   - Start Command: `gunicorn flask_api.app:app --bind 0.0.0.0:$PORT`
+   - Yields your public URL (e.g. `https://career-platform-api.onrender.com`).
+2. **Deploy Streamlit on [Streamlit Community Cloud](https://share.streamlit.io):**
+   - Click **New App** $\rightarrow$ Select this GitHub repository.
+   - Main file path: `streamlit_app/app.py`
+   - In **Advanced Settings** $\rightarrow$ **Secrets**, add:
+     ```toml
+     FLASK_API_BASE_URL = "https://your-flask-service.onrender.com/api"
+     ```
+   - Click **Deploy!**
+

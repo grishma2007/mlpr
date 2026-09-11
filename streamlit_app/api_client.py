@@ -9,13 +9,13 @@ import json
 import os
 import sys
 
-FLASK_API_BASE_URL = "http://127.0.0.1:5000/api"
+FLASK_API_BASE_URL = os.environ.get("FLASK_API_BASE_URL", "http://127.0.0.1:5000/api").rstrip("/")
 
 # Helper for friendly connection error messages
 def _handle_connection_error(e):
     return 503, {
         "success": False,
-        "error": "Flask Backend (http://127.0.0.1:5000) is offline. Please ensure 'python flask_api/app.py' is running in a terminal."
+        "error": f"Flask Backend ({FLASK_API_BASE_URL}) is offline. Please ensure the Flask server is running."
     }
 
 def check_backend_health():

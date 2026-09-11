@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎓 AI-Powered Student Career & Recruitment Platform | 503 Applied AI</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js for High Performance Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom Vanilla CSS -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ================= SIDEBAR NAVIGATION ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="brand-text">
+        <h2>AI Career Hub</h2>
+        <span>503 Applied AI Lab</span>
+      </div>
+    </div>
+
+    <div class="nav-section-title">Main Portals</div>
+    <ul class="nav-menu">
+      <li class="nav-item active" onclick="switchSection('section-dashboard')">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>Dashboard Overview</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-profile')">
+        <i class="fa-solid fa-user-graduate"></i>
+        <span>Student Profile CRUD</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-career')">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Career Prediction</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-academic')">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Academic Risk Model</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-resume')">
+        <i class="fa-solid fa-file-invoice"></i>
+        <span>Resume Analyzer</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-skillgap')">
+        <i class="fa-solid fa-chart-pie"></i>
+        <span>Skill Gap & Learning</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-jobs')">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Job Matching & Apply</span>
+      </li>
+    </ul>
+
+    <div class="nav-section-title">Recruiter Suite</div>
+    <ul class="nav-menu">
+      <li class="nav-item" onclick="switchSection('section-recruiter')">
+        <i class="fa-solid fa-building"></i>
+        <span>Recruiter Dashboard</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-ranking')">
+        <i class="fa-solid fa-ranking-star"></i>
+        <span>Candidate AI Ranking</span>
+      </li>
+    </ul>
+
+    <div class="nav-section-title">ML & Algorithm Lab</div>
+    <ul class="nav-menu">
+      <li class="nav-item" onclick="switchSection('section-evaluation')">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Model Evaluation</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-association')">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Apriori vs FP-Growth</span>
+      </li>
+      <li class="nav-item" onclick="switchSection('section-rl')">
+        <i class="fa-solid fa-robot"></i>
+        <span>Q-Learning RL Demo</span>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ================= MAIN VIEWPORT CONTENT ================= -->
+  <main class="main-content">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-title">
+        <h1 id="page-heading">AI-Powered Student Career & Recruitment Platform</h1>
+        <p>503 – Applied Artificial Intelligence: Model Development and Deployment</p>
+      </div>
+      <div class="header-actions">
+        <div class="status-pill" id="backend-status-pill">
+          <span class="status-dot"></span>
+          <span id="backend-status-text">Connecting to Flask...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: DASHBOARD OVERVIEW -->
+    <section id="section-dashboard" class="content-section">
+      <div class="hero-banner">
+        <h2>🎓 Welcome to AI-Powered Student Recruitment Hub</h2>
+        <p>A decoupled multi-tier AI application combining Supervised Machine Learning, Ensemble Random Forests, TF-IDF Job Matching, Apriori/FP-Growth Mining, and SQLite Database CRUD operations.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Students</span>
+            <i class="fa-solid fa-user-graduate stat-icon"></i>
+          </div>
+          <div class="stat-value" id="kpi-students">--</div>
+          <div class="stat-desc">Active Profiles in SQLite</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Job Openings</span>
+            <i class="fa-solid fa-briefcase stat-icon"></i>
+          </div>
+          <div class="stat-value" id="kpi-jobs">--</div>
+          <div class="stat-desc">Tech Positions Listed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">Applications</span>
+            <i class="fa-solid fa-paper-plane stat-icon"></i>
+          </div>
+          <div class="stat-value" id="kpi-apps">--</div>
+          <div class="stat-desc">Submissions Processed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-title">ML Models</span>
+            <i class="fa-solid fa-microchip stat-icon"></i>
+          </div>
+          <div class="stat-value">2 Active</div>
+          <div class="stat-desc">Random Forest Ensembles</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-rocket"></i> Quick Navigation</div>
+          </div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">Choose a task to get started immediately:</p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <button class="btn btn-secondary" onclick="switchSection('section-profile')"><i class="fa-solid fa-user-plus"></i> Create or Edit Student Profile</button>
+            <button class="btn btn-primary" onclick="switchSection('section-career')"><i class="fa-solid fa-wand-magic-sparkles"></i> Predict Suitable Career Role</button>
+            <button class="btn btn-secondary" onclick="switchSection('section-academic')"><i class="fa-solid fa-triangle-exclamation"></i> Classify Academic Performance Risk</button>
+            <button class="btn btn-secondary" onclick="switchSection('section-resume')"><i class="fa-solid fa-file-pdf"></i> Upload and Analyze Resume</button>
+            <button class="btn btn-secondary" onclick="switchSection('section-jobs')"><i class="fa-solid fa-magnifying-glass"></i> Explore Matching Tech Jobs</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-chart-pie"></i> Platform Architecture (Syllabus 503)</div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+            • <b>Frontend Layer:</b> HTML5 / CSS3 / JavaScript SPA & Streamlit Multi-page App.<br>
+            • <b>Backend Layer:</b> Flask REST APIs with Modular Blueprints.<br>
+            • <b>Machine Learning:</b> Scikit-Learn Classifiers with GridSearchCV Hyperparameter Tuning.<br>
+            • <b>Pattern Mining:</b> Apriori and FP-Growth Association Mining algorithms.<br>
+            • <b>Database:</b> SQLite Database via SQLAlchemy ORM with Full CRUD.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: STUDENT PROFILE CRUD -->
+    <section id="section-profile" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab('tab-view-students', this)">📋 View Student Directory</button>
+          <button class="tab-btn" onclick="switchTab('tab-create-student', this)">➕ Create New Student</button>
+          <button class="tab-btn" onclick="switchTab('tab-manage-skills', this)">🛠️ Manage Skills & Projects</button>
+        </div>
+
+        <!-- TAB: VIEW STUDENTS -->
+        <div id="tab-view-students" class="tab-content active">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Degree / Branch</th>
+                  <th>Semester</th>
+                  <th>CGPA</th>
+                  <th>Skills Count</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="students-table-body">
+                <tr><td colspan="8" style="text-align: center;">Loading students...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB: CREATE STUDENT -->
+        <div id="tab-create-student" class="tab-content">
+          <form id="create-student-form" onsubmit="handleCreateStudent(event)">
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="st-name" placeholder="e.g. Grishma Patel" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="st-email" placeholder="e.g. grishma@university.edu" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">College / Institute</label>
+                <input type="text" class="form-control" id="st-college" value="Institute of Technology & Science">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Degree</label>
+                <select class="form-control" id="st-degree">
+                  <option value="B.Tech">B.Tech</option>
+                  <option value="BCA">BCA</option>
+                  <option value="B.Sc">B.Sc (CS/IT)</option>
+                  <option value="M.Tech">M.Tech</option>
+                  <option value="MCA">MCA</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Branch / Stream</label>
+                <select class="form-control" id="st-branch">
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Artificial Intelligence">Artificial Intelligence</option>
+                  <option value="Data Science">Data Science</option>
+                  <option value="Information Technology">Information Technology</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Current Semester (1-8)</label>
+                <input type="number" class="form-control" id="st-semester" min="1" max="8" value="6">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Cumulative CGPA (0.0 - 10.0) *</label>
+                <input type="number" class="form-control" id="st-cgpa" min="0" max="10" step="0.1" value="8.5" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Create Profile (HTTP POST)</button>
+          </form>
+        </div>
+
+        <!-- TAB: MANAGE SKILLS & PROJECTS -->
+        <div id="tab-manage-skills" class="tab-content">
+          <div class="grid-2">
+            <div>
+              <h3 style="margin-bottom: 1rem; color: #60a5fa;">➕ Attach Skill to Student</h3>
+              <div class="form-group">
+                <label class="form-label">Select Student</label>
+                <select class="form-control" id="skill-student-select"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Skill Name</label>
+                <input type="text" class="form-control" id="new-skill-name" placeholder="e.g. Python, Docker, SQL">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Proficiency Level</label>
+                <select class="form-control" id="new-skill-prof">
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate" selected>Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" onclick="handleAddSkill()"><i class="fa-solid fa-plus"></i> Add Skill</button>
+            </div>
+
+            <div>
+              <h3 style="margin-bottom: 1rem; color: #60a5fa;">➕ Attach Project to Student</h3>
+              <div class="form-group">
+                <label class="form-label">Project Title</label>
+                <input type="text" class="form-control" id="new-proj-title" placeholder="e.g. AI-Powered Healthcare System">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" id="new-proj-desc" placeholder="Summary of architecture and outcomes..."></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Technologies Used</label>
+                <input type="text" class="form-control" id="new-proj-tech" placeholder="Python, Flask, PyTorch">
+              </div>
+              <button class="btn btn-primary" onclick="handleAddProject()"><i class="fa-solid fa-code"></i> Add Project</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: CAREER PREDICTION -->
+    <section id="section-career" class="content-section" style="display: none;">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Predict Career Role</div>
+          </div>
+          <form id="career-form" onsubmit="handleCareerPredict(event)">
+            <div class="form-group">
+              <label class="form-label">Cumulative CGPA: <span id="cgpa-val-disp" style="color: var(--accent);">8.5</span></label>
+              <input type="range" class="form-control" id="c-cgpa" min="5.0" max="10.0" step="0.1" value="8.5" oninput="document.getElementById('cgpa-val-disp').innerText = this.value">
+            </div>
+
+            <label class="form-label">Technical Skills (Possessed):</label>
+            <div class="grid-3" style="margin-bottom: 1rem;">
+              <label class="checkbox-group"><input type="checkbox" id="c-python" checked><span>Python</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-java"><span>Java</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-cpp"><span>C / C++</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-sql" checked><span>SQL / DB</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-ml" checked><span>Machine Learning</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-dl" checked><span>Deep Learning</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-dataviz" checked><span>Data Visualization</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-webdev"><span>Web Development</span></label>
+              <label class="checkbox-group"><input type="checkbox" id="c-cloud"><span>Cloud / DevOps</span></label>
+            </div>
+
+            <div class="grid-3">
+              <div class="form-group">
+                <label class="form-label">Projects Count</label>
+                <input type="number" class="form-control" id="c-projects" min="0" max="10" value="4">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Certifications Count</label>
+                <input type="number" class="form-control" id="c-certs" min="0" max="10" value="2">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Internship Experience</label>
+                <select class="form-control" id="c-internship">
+                  <option value="1" selected>Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-microchip"></i> Predict Suitable Role (HTTP POST)</button>
+          </form>
+        </div>
+
+        <div class="card" id="career-result-card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-bullseye"></i> Prediction Outcome</div>
+          </div>
+          <div id="career-result-placeholder" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+            <i class="fa-solid fa-chart-simple" style="font-size: 3rem; margin-bottom: 1rem; color: var(--border-color);"></i>
+            <p>Submit the prediction form on the left to run inference via Flask REST API.</p>
+          </div>
+          <div id="career-result-content" style="display: none;">
+            <div style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #e0f2fe; text-transform: uppercase; font-weight: 600;">Predicted Career Role</div>
+              <h2 id="pred-role-title" style="color: #67e8f9; font-size: 1.8rem; margin: 0.25rem 0;">Machine Learning Engineer</h2>
+              <div style="font-size: 0.85rem; color: #e0f2fe;">Model Confidence: <b id="pred-conf-disp">87%</b> | Architecture: Random Forest Ensemble</div>
+            </div>
+            <div style="height: 250px;">
+              <canvas id="careerChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ACADEMIC RISK -->
+    <section id="section-academic" class="content-section" style="display: none;">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Academic Risk Classifier</div>
+          </div>
+          <form id="academic-form" onsubmit="handleAcademicPredict(event)">
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Attendance (%)</label>
+                <input type="number" class="form-control" id="a-attendance" min="30" max="100" value="88">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Previous Marks (%)</label>
+                <input type="number" class="form-control" id="a-prevmarks" min="30" max="100" value="82">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Study Hours / Day</label>
+                <input type="number" class="form-control" id="a-hours" min="0.5" max="12" step="0.5" value="4.5">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Assignment Completion (%)</label>
+                <input type="number" class="form-control" id="a-assign" min="20" max="100" value="92">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Internal Marks (out of 30)</label>
+                <input type="number" class="form-control" id="a-internal" min="0" max="30" value="25">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Failed Subjects</label>
+                <input type="number" class="form-control" id="a-failed" min="0" max="8" value="0">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cumulative CGPA</label>
+              <input type="number" class="form-control" id="a-cgpa" min="0" max="10" step="0.1" value="8.5">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-magnifying-glass-chart"></i> Classify Risk Level</button>
+          </form>
+        </div>
+
+        <div class="card" id="academic-result-card">
+          <div class="card-header">
+            <div class="card-title"><i class="fa-solid fa-chart-pie"></i> Risk Assessment Outcome</div>
+          </div>
+          <div id="academic-result-placeholder" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+            <i class="fa-solid fa-user-shield" style="font-size: 3rem; margin-bottom: 1rem; color: var(--border-color);"></i>
+            <p>Fill out the academic indicators form to classify risk tier.</p>
+          </div>
+          <div id="academic-result-content" style="display: none;">
+            <div id="risk-banner" style="padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; color: white;">
+              <h2 id="risk-level-title" style="margin: 0;">🟢 LOW ACADEMIC RISK</h2>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem;" id="risk-desc-text">Model Confidence: 95%</p>
+            </div>
+            <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">💡 Prescriptive Recommendations</h4>
+            <ul id="risk-recommendations" style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.6;"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: RESUME ANALYZER -->
+    <section id="section-resume" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-file-invoice"></i> NLP Resume Parser</div>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">Upload a PDF resume or paste plain text to extract contact information, education, and domain-categorized technical skills.</p>
+        
+        <div class="grid-2">
+          <div>
+            <div class="form-group">
+              <label class="form-label">Option A: Upload PDF Resume</label>
+              <input type="file" class="form-control" id="resume-file" accept=".pdf">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Option B: Paste Plain Text</label>
+              <textarea class="form-control" id="resume-text" style="min-height: 180px;" placeholder="Paste resume contents here..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="handleAnalyzeResume()"><i class="fa-solid fa-file-circle-check"></i> Parse Resume (NLP)</button>
+          </div>
+
+          <div>
+            <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">Structured Resume Output</h4>
+            <div id="resume-output-box" style="background: #0f172a; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; min-height: 250px;">
+              <p style="color: var(--text-dim); text-align: center; margin-top: 4rem;">Extracted resume details will appear here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: SKILL GAP & LEARNING -->
+    <section id="section-skillgap" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-chart-pie"></i> Skill Gap Analyzer</div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label">Your Current Skills (comma-separated)</label>
+            <input type="text" class="form-control" id="gap-current-skills" value="Python, Machine Learning, Data Visualization, HTML">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Career Role</label>
+            <select class="form-control" id="gap-target-role">
+              <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="AI Engineer">AI Engineer</option>
+              <option value="Data Analyst">Data Analyst</option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Web Developer">Web Developer</option>
+              <option value="Cloud Engineer">Cloud Engineer</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="handleSkillGapAnalysis()"><i class="fa-solid fa-magnifying-glass"></i> Analyze Skill Readiness</button>
+
+        <div id="gap-results-container" style="display: none; margin-top: 1.75rem;">
+          <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+          <div class="grid-2">
+            <div>
+              <h4 style="color: #34d399; margin-bottom: 0.5rem;"><i class="fa-solid fa-check"></i> Matching Skills Possessed</h4>
+              <div id="gap-matching-pills" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+            </div>
+            <div>
+              <h4 style="color: #f87171; margin-bottom: 0.5rem;"><i class="fa-solid fa-xmark"></i> Missing Required Skills</h4>
+              <div id="gap-missing-pills" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+            </div>
+          </div>
+
+          <h4 style="color: #60a5fa; margin-top: 1.75rem; margin-bottom: 1rem;">📚 Recommended Learning Catalog for Missing Skills</h4>
+          <div id="learning-catalog-grid" class="grid-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: JOB MATCHING & APPLY -->
+    <section id="section-jobs" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-briefcase"></i> Available Job Openings & AI Matching</div>
+        </div>
+        <div id="jobs-container" class="grid-2">
+          <p style="color: var(--text-muted);">Loading open positions...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: RECRUITER DASHBOARD -->
+    <section id="section-recruiter" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab('tab-recruiter-apps', this)">📥 Applicant Review</button>
+          <button class="tab-btn" onclick="switchTab('tab-post-job', this)">➕ Post New Job</button>
+        </div>
+
+        <div id="tab-recruiter-apps" class="tab-content active">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>App ID</th>
+                  <th>Candidate</th>
+                  <th>Email</th>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>AI Match Score</th>
+                  <th>Status</th>
+                  <th>Change Status</th>
+                </tr>
+              </thead>
+              <tbody id="recruiter-apps-table-body">
+                <tr><td colspan="8" style="text-align: center;">Loading applications...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-post-job" class="tab-content">
+          <form id="post-job-form" onsubmit="handlePostJob(event)">
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Job Title *</label>
+                <input type="text" class="form-control" id="job-title" placeholder="e.g. Machine Learning Engineer" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Required Skills (comma-separated) *</label>
+                <input type="text" class="form-control" id="job-skills" placeholder="Python, Machine Learning, SQL, Docker" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" class="form-control" id="job-location" value="Remote / Bengaluru">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Minimum Required CGPA</label>
+                <input type="number" class="form-control" id="job-cgpa" min="0" max="10" step="0.1" value="7.5">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Job Type</label>
+                <select class="form-control" id="job-type">
+                  <option value="Full-time">Full-time</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Contract">Contract</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Job Description *</label>
+              <textarea class="form-control" id="job-desc" placeholder="Describe role requirements and responsibilities..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Post Job (HTTP POST)</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: CANDIDATE RANKING -->
+    <section id="section-ranking" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-ranking-star"></i> Explainable AI Candidate Ranking</div>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">
+          Weighted Scoring: <b>40% Skill Match + 25% Resume Similarity + 15% Academic CGPA + 10% Projects + 10% Internship</b>
+        </p>
+
+        <div class="form-group" style="max-width: 400px;">
+          <label class="form-label">Select Job to Rank Applicants</label>
+          <select class="form-control" id="rank-job-select" onchange="handleRankCandidates()"></select>
+        </div>
+
+        <div id="rankings-table-container" class="table-container" style="margin-top: 1.5rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Candidate Name</th>
+                <th>CGPA</th>
+                <th>Match Score</th>
+                <th>Recommendation Badge</th>
+                <th>Natural Language Rationale</th>
+              </tr>
+            </thead>
+            <tbody id="rankings-tbody">
+              <tr><td colspan="6" style="text-align: center;">Select a job above to rank candidates.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: MODEL EVALUATION -->
+    <section id="section-evaluation" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-chart-line"></i> Machine Learning Benchmark & Hyperparameter Tuning</div>
+        </div>
+        <div class="grid-2">
+          <div>
+            <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">Model 1: Career Prediction (4 Candidates)</h4>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Model Architecture</th><th>Accuracy</th><th>F1-Score</th></tr>
+                </thead>
+                <tbody id="eval-career-tbody">
+                  <tr><td colspan="3">Loading metrics...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">Model 2: Academic Risk (Single vs Ensemble)</h4>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Model Architecture</th><th>Accuracy</th><th>F1-Score</th></tr>
+                </thead>
+                <tbody id="eval-academic-tbody">
+                  <tr><td colspan="3">Loading metrics...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; background: #0f172a; border-radius: var(--radius-md); padding: 1.25rem; border: 1px solid var(--border-color);">
+          <h4 style="color: #38bdf8; margin-bottom: 0.5rem;">⚙️ GridSearchCV Parameter Tuning Comparison</h4>
+          <p id="eval-tuning-summary" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Loading parameter search logs...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: ASSOCIATION MINING -->
+    <section id="section-association" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-diagram-project"></i> Association Rule Mining: Apriori vs FP-Growth</div>
+        </div>
+        <div class="grid-3" style="margin-bottom: 1.5rem;">
+          <div class="stat-card">
+            <div class="stat-title">Apriori Runtime</div>
+            <div class="stat-value" id="assoc-apriori-time">-- s</div>
+            <div class="stat-desc">Candidate Itemsets Pass</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">FP-Growth Runtime</div>
+            <div class="stat-value" id="assoc-fpgrowth-time">-- s</div>
+            <div class="stat-desc">FP-Tree Recursive Mining</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">FP-Growth Speedup</div>
+            <div class="stat-value" id="assoc-speedup" style="color: #34d399;">-- x</div>
+            <div class="stat-desc">Efficiency Factor</div>
+          </div>
+        </div>
+
+        <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">Discovered Skill Association Rules</h4>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Antecedents (If Has)</th>
+                <th>Consequents (Then Has)</th>
+                <th>Support</th>
+                <th>Confidence</th>
+                <th>Lift Score</th>
+              </tr>
+            </thead>
+            <tbody id="assoc-rules-tbody">
+              <tr><td colspan="5" style="text-align: center;">Loading association rules...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: REINFORCEMENT LEARNING -->
+    <section id="section-rl" class="content-section" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="fa-solid fa-robot"></i> Q-Learning Learning Path Trajectory Optimizer</div>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">
+          Educational Reinforcement Learning simulation using the <b>Bellman Equation</b> to discover the optimal student study path from Foundational Beginner to Production Ready.
+        </p>
+        <button class="btn btn-primary" onclick="handleRunRL()"><i class="fa-solid fa-play"></i> Run Q-Learning Simulation</button>
+
+        <div id="rl-results" style="margin-top: 1.5rem; display: none;">
+          <h4 style="color: #60a5fa; margin-bottom: 0.75rem;">Optimal Step-by-Step Trajectory</h4>
+          <div id="rl-steps-container"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Custom Vanilla JavaScript Logic -->
+<script src="/static/js/app.js"></script>
+</body>
+</html>

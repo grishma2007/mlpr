@@ -1,0 +1,19 @@
+skill,course_name,platform,level,description,url
+Python,Python for Everybody Specialization,Coursera,Beginner,"Master Python basics, data structures, and web scraping.",https://www.coursera.org/specializations/python
+Python,Complete Python Bootcamp: Go from zero to hero,Udemy,Intermediate,"OOP, decorators, generators, and comprehensive project building.",https://www.udemy.com/course/complete-python-bootcamp/
+SQL,SQL for Data Science & Analytics,Coursera / UC Davis,Beginner,"Write complex SQL queries, JOINs, aggregations, and subqueries.",https://www.coursera.org/learn/sql-for-data-science
+SQL,The Complete SQL Bootcamp: Go from Zero to Hero,Udemy,Intermediate,"PostgreSQL database administration, GROUP BY, window functions.",https://www.udemy.com/course/the-complete-sql-bootcamp/
+Machine Learning,Machine Learning Specialization,Coursera / DeepLearning.AI,Intermediate,"Supervised learning, linear/logistic regression, neural networks, decision trees.",https://www.coursera.org/specializations/machine-learning-introduction
+Machine Learning,Hands-On Machine Learning with Scikit-Learn,O'Reilly / Video Series,Intermediate,"Classification, regression, ensemble methods, clustering, and PCA.",https://www.oreilly.com/
+Deep Learning,Deep Learning Specialization,Coursera / Andrew Ng,Advanced,"CNNs, RNNs, Transformers, optimization algorithms, and hyperparameter tuning.",https://www.coursera.org/specializations/deep-learning
+Deep Learning,PyTorch for Deep Learning Bootcamp,Udemy / ZTM,Advanced,"Computer vision, NLP, custom architectures using PyTorch and Torchvision.",https://www.udemy.com/
+Data Visualization,Data Visualization with Tableau Specialization,Coursera,Beginner,"Design interactive dashboards, storytelling with data, and visual analytics.",https://www.coursera.org/specializations/data-visualization
+Data Visualization,"Python Data Visualization: Matplotlib, Seaborn & Plotly",Udemy,Intermediate,"Interactive data charts, heatmaps, geographical plots, and custom visualizations.",https://www.udemy.com/
+Web Development,The Complete 2026 Web Development Bootcamp,Udemy / Angela Yu,Beginner,"HTML5, CSS3, JavaScript, React, Node.js, Express, and REST APIs.",https://www.udemy.com/course/the-complete-web-development-bootcamp/
+Web Development,Full Stack Open: Modern Web Development,University of Helsinki,Intermediate,"React, Redux, Node.js, REST APIs, GraphQL, TypeScript, and CI/CD.",https://fullstackopen.com/en/
+Cloud,AWS Certified Cloud Practitioner & Solutions Architect,A Cloud Guru / Udemy,Beginner,"EC2, S3, IAM, Lambda, VPC, RDS, and cloud architecture best practices.",https://acloudguru.com/
+Cloud,Google Cloud Associate Cloud Engineer Certification,Coursera / Google Cloud,Intermediate,"GCP infrastructure, Compute Engine, Kubernetes Engine (GKE), and BigQuery.",https://www.coursera.org/professional-certificates/gcp-cloud-architect
+Java,Java Programming Masterclass,Udemy / Tim Buchalka,Beginner,"OOP, Java 17/21 features, collections framework, multithreading, and Spring Boot basics.",https://www.udemy.com/course/java-the-complete-java-developer-course/
+C++,Beginning C++ Programming - From Beginner to Beyond,Udemy,Beginner,"Pointers, memory management, STL containers, modern C++14/17/20 concepts.",https://www.udemy.com/course/beginning-c-plus-plus-programming/
+Docker,Docker & Kubernetes: The Practical Guide,Udemy / Academind,Intermediate,"Containerization, Docker Compose, Kubernetes orchestration, CI/CD integration.",https://www.udemy.com/course/docker-kubernetes-the-practical-guide/
+TensorFlow,DeepLearning.AI TensorFlow Developer Professional Certificate,Coursera,Intermediate,"Build and train neural networks, CNNs for computer vision, NLP models, and time series.",https://www.coursera.org/professional-certificates/tensorflow-in-practice

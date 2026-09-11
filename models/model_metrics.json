@@ -1,0 +1,362 @@
+{
+    "career_prediction": {
+        "comparison": {
+            "Logistic Regression": {
+                "accuracy": 0.53,
+                "precision": 0.5285,
+                "recall": 0.53,
+                "f1_score": 0.5247
+            },
+            "K-Nearest Neighbors": {
+                "accuracy": 0.452,
+                "precision": 0.4585,
+                "recall": 0.452,
+                "f1_score": 0.4484
+            },
+            "Support Vector Machine": {
+                "accuracy": 0.504,
+                "precision": 0.5045,
+                "recall": 0.504,
+                "f1_score": 0.5022
+            },
+            "Random Forest (Ensemble)": {
+                "accuracy": 0.518,
+                "precision": 0.5162,
+                "recall": 0.518,
+                "f1_score": 0.5159
+            }
+        },
+        "tuning": {
+            "model": "Random Forest Classifier",
+            "best_parameters": {
+                "max_depth": 10,
+                "min_samples_split": 5,
+                "n_estimators": 100
+            },
+            "accuracy_before": 0.518,
+            "accuracy_after": 0.516,
+            "f1_after": 0.5128,
+            "precision_after": 0.5133,
+            "recall_after": 0.516
+        },
+        "confusion_matrix": [
+            [
+                31,
+                0,
+                0,
+                1,
+                0,
+                5,
+                0,
+                13,
+                0,
+                0
+            ],
+            [
+                0,
+                28,
+                0,
+                6,
+                1,
+                0,
+                0,
+                2,
+                7,
+                6
+            ],
+            [
+                0,
+                0,
+                24,
+                1,
+                16,
+                1,
+                2,
+                2,
+                0,
+                4
+            ],
+            [
+                3,
+                7,
+                3,
+                26,
+                0,
+                1,
+                2,
+                2,
+                5,
+                1
+            ],
+            [
+                0,
+                1,
+                11,
+                1,
+                30,
+                6,
+                0,
+                0,
+                0,
+                1
+            ],
+            [
+                11,
+                0,
+                4,
+                0,
+                5,
+                19,
+                0,
+                11,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                2,
+                1,
+                0,
+                36,
+                0,
+                4,
+                7
+            ],
+            [
+                14,
+                2,
+                1,
+                2,
+                1,
+                8,
+                0,
+                20,
+                1,
+                1
+            ],
+            [
+                0,
+                8,
+                1,
+                11,
+                0,
+                0,
+                1,
+                1,
+                24,
+                4
+            ],
+            [
+                0,
+                7,
+                2,
+                1,
+                3,
+                0,
+                14,
+                0,
+                3,
+                20
+            ]
+        ],
+        "classes": [
+            "AI Engineer",
+            "Backend Developer",
+            "Business Analyst",
+            "Cloud Engineer",
+            "Data Analyst",
+            "Data Scientist",
+            "Frontend Developer",
+            "Machine Learning Engineer",
+            "Software Developer",
+            "Web Developer"
+        ],
+        "classification_report": {
+            "AI Engineer": {
+                "precision": 0.5254237288135594,
+                "recall": 0.62,
+                "f1-score": 0.5688073394495413,
+                "support": 50.0
+            },
+            "Backend Developer": {
+                "precision": 0.5283018867924528,
+                "recall": 0.56,
+                "f1-score": 0.5436893203883495,
+                "support": 50.0
+            },
+            "Business Analyst": {
+                "precision": 0.5217391304347826,
+                "recall": 0.48,
+                "f1-score": 0.5,
+                "support": 50.0
+            },
+            "Cloud Engineer": {
+                "precision": 0.5098039215686274,
+                "recall": 0.52,
+                "f1-score": 0.5148514851485149,
+                "support": 50.0
+            },
+            "Data Analyst": {
+                "precision": 0.5263157894736842,
+                "recall": 0.6,
+                "f1-score": 0.5607476635514018,
+                "support": 50.0
+            },
+            "Data Scientist": {
+                "precision": 0.475,
+                "recall": 0.38,
+                "f1-score": 0.4222222222222222,
+                "support": 50.0
+            },
+            "Frontend Developer": {
+                "precision": 0.6545454545454545,
+                "recall": 0.72,
+                "f1-score": 0.6857142857142857,
+                "support": 50.0
+            },
+            "Machine Learning Engineer": {
+                "precision": 0.39215686274509803,
+                "recall": 0.4,
+                "f1-score": 0.39603960396039606,
+                "support": 50.0
+            },
+            "Software Developer": {
+                "precision": 0.5454545454545454,
+                "recall": 0.48,
+                "f1-score": 0.5106382978723404,
+                "support": 50.0
+            },
+            "Web Developer": {
+                "precision": 0.45454545454545453,
+                "recall": 0.4,
+                "f1-score": 0.425531914893617,
+                "support": 50.0
+            },
+            "accuracy": 0.516,
+            "macro avg": {
+                "precision": 0.5133286774373658,
+                "recall": 0.516,
+                "f1-score": 0.5128242133200669,
+                "support": 500.0
+            },
+            "weighted avg": {
+                "precision": 0.5133286774373659,
+                "recall": 0.516,
+                "f1-score": 0.5128242133200669,
+                "support": 500.0
+            }
+        }
+    },
+    "academic_risk": {
+        "comparison": {
+            "Logistic Regression": {
+                "accuracy": 0.98,
+                "precision": 0.9802,
+                "recall": 0.98,
+                "f1_score": 0.98
+            },
+            "K-Nearest Neighbors": {
+                "accuracy": 0.965,
+                "precision": 0.9649,
+                "recall": 0.965,
+                "f1_score": 0.9648
+            },
+            "Decision Tree (Single Model)": {
+                "accuracy": 0.94,
+                "precision": 0.9398,
+                "recall": 0.94,
+                "f1_score": 0.9394
+            },
+            "Random Forest (Ensemble Model)": {
+                "accuracy": 0.975,
+                "precision": 0.9752,
+                "recall": 0.975,
+                "f1_score": 0.975
+            }
+        },
+        "single_vs_ensemble": {
+            "single_model": "Decision Tree (Single Model)",
+            "single_accuracy": 0.94,
+            "single_f1": 0.9394,
+            "ensemble_model": "Random Forest (Ensemble Model)",
+            "ensemble_accuracy": 0.975,
+            "ensemble_f1": 0.975
+        },
+        "tuning": {
+            "model": "Random Forest Classifier",
+            "best_parameters": {
+                "max_depth": 20,
+                "min_samples_split": 2,
+                "n_estimators": 100
+            },
+            "accuracy_before": 0.975,
+            "accuracy_after": 0.975,
+            "f1_after": 0.975,
+            "precision_after": 0.9752,
+            "recall_after": 0.975
+        },
+        "confusion_matrix": [
+            [
+                100,
+                0,
+                1
+            ],
+            [
+                0,
+                174,
+                4
+            ],
+            [
+                4,
+                1,
+                116
+            ]
+        ],
+        "classes": [
+            "High Risk",
+            "Low Risk",
+            "Medium Risk"
+        ],
+        "classification_report": {
+            "High Risk": {
+                "precision": 0.9615384615384616,
+                "recall": 0.9900990099009901,
+                "f1-score": 0.975609756097561,
+                "support": 101.0
+            },
+            "Low Risk": {
+                "precision": 0.9942857142857143,
+                "recall": 0.9775280898876404,
+                "f1-score": 0.9858356940509915,
+                "support": 178.0
+            },
+            "Medium Risk": {
+                "precision": 0.9586776859504132,
+                "recall": 0.9586776859504132,
+                "f1-score": 0.9586776859504132,
+                "support": 121.0
+            },
+            "accuracy": 0.975,
+            "macro avg": {
+                "precision": 0.9715006205915296,
+                "recall": 0.9754349285796812,
+                "f1-score": 0.9733743786996553,
+                "support": 400.0
+            },
+            "weighted avg": {
+                "precision": 0.9752456043956045,
+                "recall": 0.975,
+                "f1-score": 0.9750383472673253,
+                "support": 400.0
+            }
+        }
+    },
+    "metadata": {
+        "evaluation_engine": "Scikit-Learn 1.7+",
+        "tuning_method": "GridSearchCV with 5-Fold Cross Validation",
+        "ensemble_algorithm": "Random Forest Classifier (Bagging + Feature Subsampling)",
+        "status": "Production Ready"
+    }
+}
